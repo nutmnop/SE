@@ -9,7 +9,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Rome Theatre</title>
+    
+    <title>Rome Theatre 
+        <%if(username){%>
+        <%=username%>
+        <%}%>
+    </title>
     <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -62,7 +67,11 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse yamm" id="navigation">
                 <div class="button navbar-right">
+                    <%if(!username){%>
                     <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register')" data-wow-delay="0.45s">ลงชื่อเข้าใช้</button>
+                    <%}else{%>
+                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('index')" data-wow-delay="0.45s">ออกจากระบบ</button>
+                    <%}%>
                     <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('#')" data-wow-delay="0.48s">รอบฉาย</button>
                 </div>
                 <ul class="main-nav nav navbar-nav navbar-right">
@@ -128,7 +137,7 @@
                 <div class="box-for overflow">
                     <div class="col-md-12 col-xs-12 register-blocks">
                         <h2>สมัครสมาชิก </h2>
-                        <form action="/register" method="post">
+                        <form action="/register" method="post" name="register">
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" class="form-control" id="name">
@@ -142,11 +151,15 @@
                                 <input type="text" class="form-control" id="email">
                             </div>
                             <div class="form-group">
+                                    <label for="name">Username</label>
+                                    <input type="text" class="form-control" id="username">
+                                </div>
+                            <div class="form-group">
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control" id="password">
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-default">Register</button>
+                                <button type="submit" class="btn btn-default" name="register">Register</button>
                             </div>
                         </form>
                     </div>
