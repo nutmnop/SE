@@ -12,10 +12,11 @@ module.exports = function(){
 
     passport.deserializeUser(function(id,done){
         User.findOne({ _id: id},'-password -salt',function(err,user){
-            done(err , user);
+            done(err , user.id);
         });
 
     });
+
     require('./strategies/local.js')();
 
 

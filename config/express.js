@@ -8,18 +8,19 @@ var passport = require('passport');
 module.exports = function(){
     var app = express();
     
-    app.use(bodyParser.urlencoded({
-        extended: true
-      }));
+ 
     app.use(session({
         secret:config.sessionSecret,
         resave: false,
         saveUninitialized: true
       }))
+      app.use(bodyParser.urlencoded({
+        extended: true
+      }));
+      app.use(bodyParser.json());
+      app.use(validator());
     app.use(passport.initialize());
     app.use(passport.session());
-    app.use(bodyParser.json());
-    app.use(validator());
 
     app.set('views','./app/views');
     app.set('view engine','ejs');
